@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Registration Form</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .form-container {
+      background-color: #ffffff;
+      width: 100%;
+      max-width: 800px;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .form-title {
+      text-align: center;
+      color: #333333;
+      margin-bottom: 25px;
+      font-size: 26px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 3px solid #4a90e2;
+      display: inline-block;
+      width: 100%;
+      padding-bottom: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #444444;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 15px;
+    }
+
+    .form-row .form-group {
+      flex: 1;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #cccccc;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    input[type="tel"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #4a90e2;
+      outline: none;
+    }
+
+    .dob-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .phone-group {
+      display: flex;
+      gap: 8px;
+    }
+
+    .phone-prefix {
+      width: 70px;
+      background-color: #e9ecef;
+      border: 1px solid #cccccc;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #555555;
+    }
+
+    .radio-group, .checkbox-group {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-top: 5px;
+    }
+
+    .radio-group label, .checkbox-group label {
+      font-weight: normal;
+      cursor: pointer;
+    }
+
+    /* Qualification Table Styling */
+    .table-section {
+      margin-top: 25px;
+      margin-bottom: 20px;
+    }
+
+    .table-section h3 {
+      margin-bottom: 10px;
+      color: #333;
+      font-size: 18px;
+    }
+
+    .qual-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+
+    .qual-table th, .qual-table td {
+      border: 1px solid #dddddd;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .qual-table th {
+      background-color: #4a90e2;
+      color: white;
+      font-weight: 600;
+    }
+
+    .qual-table td input {
+      width: 100%;
+      padding: 6px 8px;
+    }
+
+    /* Buttons */
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .btn {
+      padding: 12px 30px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn-submit {
+      background-color: #4a90e2;
+      color: white;
+    }
+
+    .btn-submit:hover {
+      background-color: #357abd;
+    }
+
+    .btn-reset {
+      background-color: #6c757d;
+      color: white;
+    }
+
+    .btn-reset:hover {
+      background-color: #5a6268;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2 class="form-title">Student Registration</h2>
+
+    <form action="submit.php" method="POST">
+      
+      <!-- Name -->
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter full name" required>
+      </div>
+
+      <!-- Date of Birth -->
+      <div class="form-group">
+        <label>DOB (Date of Birth)</label>
+        <div class="dob-group">
+          <select name="dob-day" required>
+            <option value="">Day</option>
+            <!-- Days 1-31 -->
+            <script>
+              for(let i=1; i<=31; i++) {
+                document.write(`<option value="${i}">${i}</option>`);
+              }
+            </script>
+          </select>
+
+          <select name="dob-month" required>
+            <option value="">Month</option>
+            <option value="Jan">Jan</option>
+            <option value="Feb">Feb</option>
+            <option value="Mar">Mar</option>
+            <option value="Apr">Apr</option>
+            <option value="May">May</option>
+            <option value="Jun">Jun</option>
+            <option value="Jul">Jul</option>
+            <option value="Aug">Aug</option>
+            <option value="Sep">Sep</option>
+            <option value="Oct">Oct</option>
+            <option value="Nov">Nov</option>
+            <option value="Dec">Dec</option>
+          </select>
+
+          <select name="dob-year" required>
+            <option value="">Year</option>
+            <script>
+              for(let i=2026; i>=1990; i--) {
+                document.write(`<option value="${i}">${i}</option>`);
+              }
+            </script>
+          </select>
+        </div>
+      </div>
+
+      <!-- Phone Number & Email -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <div class="phone-group">
+            <span class="phone-prefix">+91</span>
+            <input type="tel" id="phone" name="phone" placeholder="Mobile Number" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+        </div>
+      </div>
+
+      <!-- Password & Gender -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Password" required>
+        </div>
+
+        <div class="form-group">
+          <label>Gender</label>
+          <div class="radio-group">
+            <label><input type="radio" name="gender" value="male" required> Male</label>
+            <label><input type="radio" name="gender" value="female"> Female</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Address -->
+      <div class="form-group">
+        <label for="address">Address</label>
+        <textarea id="address" name="address" rows="3" placeholder="Enter your full address"></textarea>
+      </div>
+
+      <!-- City & Pincode -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" id="city" name="city">
+        </div>
+
+        <div class="form-group">
+          <label for="pincode">Pincode</label>
+          <input type="text" id="pincode" name="pincode">
+        </div>
+      </div>
+    <!-- State & Country -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="state">State</label>
+          <input type="text" id="state" name="state">
+        </div>
+
+        <div class="form-group">
+          <label for="country">Country</label>
+          <input type="text" id="country" name="country" value="India">
+        </div>
+      </div>
+
+      <!-- Language -->
+      <div class="form-group">
+        <label>Language</label>
+        <div class="radio-group">
+          <label><input type="radio" name="language" value="hindi"> Hindi</label>
+          <label><input type="radio" name="language" value="english"> English</label>
+        </div>
+      </div>
+
+      <!-- Qualification Table Section -->
+      <div class="table-section">
+        <h3>Qualification</h3>
+        <table class="qual-table">
+          <thead>
+            <tr>
+              <th>Sl. No.</th>
+              <th>Examination</th>
+              <th>Board / University</th>
+              <th>Percentage</th>
+              <th>Year of Passing</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Class 10</td>
+              <td><input type="text" name="board_10" placeholder="Board Name"></td>
+              <td><input type="text" name="pct_10" placeholder="%"></td>
+              <td><input type="text" name="year_10" placeholder="YYYY"></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Class 12</td>
+              <td><input type="text" name="board_12" placeholder="Board Name"></td>
+              <td><input type="text" name="pct_12" placeholder="%"></td>
+              <td><input type="text" name="year_12" placeholder="YYYY"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Course & Branch -->
+      <div class="form-row">
+        <div class="form-group">
+          <label>Course</label>
+          <div class="radio-group">
+            <label><input type="radio" name="course" value="diploma"> Diploma</label>
+            <label><input type="radio" name="course" value="btech"> B.Tech</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Branch</label>
+          <div class="radio-group">
+            <label><input type="radio" name="branch" value="cse"> CSE</label>
+            <label><input type="radio" name="branch" value="ece"> ECE</label>
+            <label><input type="radio" name="branch" value="electrical"> Electrical</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="button-group">
+        <button type="submit" class="btn btn-submit">Submit</button>
+        <button type="reset" class="btn btn-reset">Reset</button>
+      </div>
+
+   <div style="text-align:center; margin-top:20px;">
+  <a href="view_students.php"
+     style="display:inline-block; padding:12px 20px;
+     background:#198754; color:white; text-decoration:none;
+     border-radius:6px;">
+    View Registered Students
+  </a>
+</div> </form>
+  </div>
+
+</body>
+</html>
